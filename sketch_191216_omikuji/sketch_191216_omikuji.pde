@@ -1,30 +1,18 @@
 import processing.opengl.*;
 
-color[] pallete = {#f64231,#f64231, #a8c8b9,#f64231, #a8c8b9};
-int sw = 8;
-int snow_num = 30;
-
-float[] snowX = new float[snow_num];
-float[] snowY = new float[snow_num];
-float[] snowXS = new float[snow_num];
-float[] snowYS = new float[snow_num];
-float[] snowS = new float[snow_num];
-
-// card[] cards = new card[10];
-
 int imgNum = 7;
 PImage[] imgs = new PImage[imgNum];
 PImage[] kumoImgs = new PImage[1];
 
 PGraphics kumoCanvas;
 PGraphics kujiCanvas;
+float zoomLife = 0;
 
 void setup() {
   // size(1280, 720, OPENGL);
   fullScreen(OPENGL);
   background(255);
   strokeCap(ROUND);
-  // colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER);
 
   kumoCanvas = createGraphics(800, 185);
@@ -42,10 +30,8 @@ void setup() {
   for (int i = 0; i < 1; i++) {
     kumoImgs[i] = loadImage("data/kumo" + i+".png");
   }
-
   for(int i = 0; i < 300; i++){
     preDrawKuji();
-    // drawKuji();
   }
 }
 
@@ -73,8 +59,6 @@ void mouseClicked(){
   zoomLife = 1;
 }
 
-float zoomLife = 0;
-
 void drawKuji(){
   kujiCanvas.beginDraw();
     kujiCanvas.pushMatrix();
@@ -88,10 +72,7 @@ void drawKuji(){
   image(kujiCanvas, 0, 0);
   image(kumoCanvas, frameCount/2 % (width+kumoCanvas.width)-kumoCanvas.width, -20);
   image(kumoCanvas, width-frameCount/3.45 % (width+kumoCanvas.width)-kumoCanvas.width, height - 160);
-
-
 }
-
 
 void preDrawKuji(){
   kujiCanvas.beginDraw();
