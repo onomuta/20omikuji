@@ -54,7 +54,7 @@ void draw() {
   image(kumoCanvas, width-frameCount/3.45 % (width+kumoCanvas.width)-kumoCanvas.width, height - 160);
 }
 
-void mouseClicked(){
+void mousePressed(){
   drawKuji();
   zoomLife = 1;
 }
